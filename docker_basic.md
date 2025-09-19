@@ -8,7 +8,14 @@
 docker run <image>
 ```
 
-上記のコマンドは、 `docker create` と `docker start` を同時にやってくれる
+⬆️ `docker create` と `docker start` を同時にやってくれる
+
+
+```
+docker run -d -p 8080:80 --name=web-server nginx
+```
+
+⬆️バックグラウンドで(`-d` <- detouched mode という)、コンテナの 80番ポートを 8080 にポートフォワードして（`-p 8080:80`）、web-server という名前で（`--name=web-server`）、nginx という image のコンテナを動かしてね
 
 ### コンテナの一時停止／一時停止の解除
 
@@ -56,8 +63,11 @@ docker rm <コンテナID>
 ## コンテナ稼働中に実施できるコマンド
 
 ```
-docker logs
+docker logs [-f] <コンテナID もしくは コンテナ名>
 ```
+
+⬆️稼働中のコンテナのログを表示する
+`-f` をつけると、ログを tail して watch するようなイメージになる
 
 ```
 docker inspect
