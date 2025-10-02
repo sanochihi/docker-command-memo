@@ -1,6 +1,32 @@
 # Docker の基本コマンド
 
+## コンテキストの確認・切り替え
+
+
+```:存在するコンテキストを確認する
+docker context ls
+```
+
+```:今のコンテキストを確認する
+docker context ls
+```
+
+
+```:切り替え
+docker context use <context名>
+```
+
+
 ## Docker のライフサイクルに関わるコマンド
+
+### コンテナイメージを作る
+
+```
+docker build <Dockerfile のパス>
+```
+
+⬆️ 上記で指定された Dockerfile という名前のファイルの内容に基づき、Docker image が作成される
+→ 上記のイメージIDを指定して `docker run` することで
 
 ### コンテナを起動させる
 
@@ -70,8 +96,10 @@ docker logs [-f] <コンテナID もしくは コンテナ名>
 `-f` をつけると、ログを tail して watch するようなイメージになる
 
 ```
-docker inspect
+docker exec -it <コンテナID もしくは コンテナ名> <シェルのパス（/bin/bash など）>
 ```
+
+⬆️docker コンテナの中に入ってシェルコマンドを実行できる
 
 ```
 docker inspect

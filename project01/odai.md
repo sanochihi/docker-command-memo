@@ -30,3 +30,15 @@ curl http://localhost:8088
 ```
 
 ## 2. nginx のコンテナの中身を修正する 
+
+まずコンテナに入る
+
+```
+docker exec -it web_server bash
+```
+
+vim はたぶん入っていないので `apt-get update` -> `apt install vim` でインストールする
+
+その上で、 `/usr/share/nginx/html/index.html` を編集。
+
+その後、コンテナを抜けて `http://localhost:8088` にアクセスすると、編集後の index.html を参照できるはず！
